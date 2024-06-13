@@ -1,4 +1,4 @@
-import sqlite3
+# lib/models/__init__.py
 
-CONN = sqlite3.connect('company.db')
-CURSOR = CONN.cursor()
+from .author import Author
+from .book import Book
