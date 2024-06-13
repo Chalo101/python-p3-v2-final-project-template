@@ -1,6 +1,3 @@
-Creating a comprehensive README.md is crucial for any project as it serves as a guide for users and collaborators. Below is a template for a README.md file tailored to a project with a CLI script managing books and authors using SQLAlchemy and Python.
-
----
 
 # Book Management CLI Application
 
@@ -21,7 +18,7 @@ To use this application, ensure you have Python 3.x installed along with the req
 Install the required dependencies using pip:
 
 ```bash
-pip install -r requirements.txt
+pipenv install
 ```
 
 ## Usage
@@ -84,18 +81,11 @@ Defines the `Book` model class with the following attributes and methods:
 - **Attributes**: `id`, `title`, `genre`, `author_id`
 - **ORM Methods**: `create`, `delete`, `get_all`, `find_by_id`
 
-## Example
-
-![CLI Application Example](example.png)
 
 ## Contributors
 
-- Your Name (email@example.com)
+- Your Name Charles Kagoko
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Adjust the contents based on your specific project details, including adding relevant sections such as examples, contributors, license information, and any additional functionalities or configurations specific to your CLI application. This template provides a structured approach to crafting an informative README.md that enhances project understanding and usability for users and collaborators alike.
