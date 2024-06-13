@@ -84,8 +84,8 @@ Defines the `Book` model class with the following attributes and methods:
 
 ## Contributors
 
-- Your Name Charles Kagoko
+Charles Kagoko
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
