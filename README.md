@@ -1,172 +1,101 @@
-# Phase 3 CLI+ORM Project Template
-
-## Learning Goals
-
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+Creating a comprehensive README.md is crucial for any project as it serves as a guide for users and collaborators. Below is a template for a README.md file tailored to a project with a CLI script managing books and authors using SQLAlchemy and Python.
 
 ---
 
-## Introduction
+# Book Management CLI Application
 
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
+This Python CLI application allows users to manage a collection of books and their authors. It leverages SQLAlchemy for database management and provides functionalities to add new books, view existing books, search books by title, author, or genre, and delete books from the database.
 
-Take a look at the directory structure:
+## Getting Started
 
-```console
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-└── lib
-    ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
-    ├── cli.py
-    ├── debug.py
-    └── helpers.py
+To use this application, ensure you have Python 3.x installed along with the required dependencies listed in `requirements.txt`. Clone this repository to your local machine and set up the database using SQLite or another supported database management system.
+
+### Prerequisites
+
+- Python 3.x
+- SQLAlchemy
+- SQLite (or another supported RDBMS)
+
+### Installing Dependencies
+
+Install the required dependencies using pip:
+
+```bash
+pip install -r requirements.txt
 ```
 
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
+## Usage
 
----
+Run the CLI application by executing `python lib/cli.py` from the command line. Follow the prompts to perform various operations:
 
-## Generating Your Environment
-
-You might have noticed in the file structure- there's already a Pipfile!
-
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
-
-```console
-pipenv install
-pipenv shell
+```bash
+python lib/cli.py
 ```
 
----
+### Functionality
 
-## Generating Your CLI
+#### Adding a New Book
 
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
+Allows users to add a new book by entering the title, genre, and author's name. If the author doesn't exist in the database, they are added automatically.
 
-The project template has a sample CLI in `lib/cli.py` that looks like this:
+#### Viewing Existing Books
 
-```py
-# lib/cli.py
+Displays a list of all existing books in the database, showing the title, genre, and author for each book.
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+#### Searching for Books
 
+Enables users to search for books by title, author, or genre. Displays search results matching the provided keyword.
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+#### Deleting a Book
 
+Allows users to delete a book by entering its title. Prompts for confirmation before deleting the book from the database.
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+#### Exiting the Program
 
+Exits the CLI application gracefully.
 
-if __name__ == "__main__":
-    main()
-```
+## Files and Functions
 
-The helper functions are located in `lib/helpers.py`:
+### `cli.py`
 
-```py
-# lib/helpers.py
+The main CLI script (`cli.py`) contains the following functions:
 
-def helper_1():
-    print("Performing useful function#1.")
+- **`main()`**: Controls the main menu loop and user interaction.
+- **`menu()`**: Displays the menu options for the user to choose from.
+- **`add_book()`**: Prompts the user to add a new book to the database.
+- **`view_books()`**: Displays all existing books in the database.
+- **`search_books()`**: Allows users to search for books by title, author, or genre.
+- **`delete_book()`**: Prompts the user to delete a book from the database.
+- **`exit_program()`**: Exits the CLI application.
 
+### Models (`author.py` and `book.py`)
 
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
+#### `author.py`
 
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
+Defines the `Author` model class with the following attributes and methods:
 
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
+- **Attributes**: `id`, `name`
+- **ORM Methods**: `create`, `delete`, `get_all`, `find_by_id`
 
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
+#### `book.py`
 
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
+Defines the `Book` model class with the following attributes and methods:
 
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
+- **Attributes**: `id`, `title`, `genre`, `author_id`
+- **ORM Methods**: `create`, `delete`, `get_all`, `find_by_id`
 
-- User interface
-- Data persistence
-- Problem domain rules and logic
+## Example
+
+![CLI Application Example](example.png)
+
+## Contributors
+
+- Your Name (email@example.com)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Updating README.md
-
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
-
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
-
-### What Goes into a README?
-
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
-
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
----
-
-## Conclusion
-
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
-
-Happy coding!
-
----
-
-## Resources
-
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+Adjust the contents based on your specific project details, including adding relevant sections such as examples, contributors, license information, and any additional functionalities or configurations specific to your CLI application. This template provides a structured approach to crafting an informative README.md that enhances project understanding and usability for users and collaborators alike.
